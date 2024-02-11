@@ -1,0 +1,52 @@
+/******************************************************************************
+1st programm of Linked List
+Implementation Of Linked List 
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node*next;
+    
+    Node(int data){
+        
+        this->data=data;
+        this->next=NULL; //ye show kar  raha hai ki koi bhi node aapas me connected nahi hai , kyuki sabhi node ke next me NULL hai;
+    }
+};
+void print(Node*head){
+    Node*temp=head;
+    while(temp!=NULL){
+        cout<<temp->data;
+        temp=temp->next;
+        cout<<" ";
+    }
+}
+
+int main()
+{
+    Node *first=new Node(10);
+    Node *second=new Node(100);
+    Node *third=new Node(1000);
+    Node *fourth=new Node(10000);
+    Node *fifth=new Node(100000);
+    
+    //connecting all node to each other
+    first->next=second;
+    second->next=third;
+    third->next=fourth;
+    fourth->next=fifth;
+    // first->next=second;
+    cout<<"printing all Value of Node"<<endl;
+    print(first);
+    
+
+    return 0;
+}
+
+// OUTPUT
+
+printing all Value of Node
+10 100 1000 10000 100000 
