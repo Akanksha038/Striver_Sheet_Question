@@ -5,11 +5,13 @@ Count occurence of element by using map
 *******************************************************************************/
 #include <iostream>
 #include<unordered_map>
+#include<map>
 using namespace std;
 
 int main()
 {
-    string str="Thiruvananthapuram"; 
+    string str="thiruvananthapuram";
+    // map<char,int>freq;
     unordered_map<char,int>freq;
     for(int i=0;i<str.length();i++){
         char ch=str[i];
@@ -27,16 +29,27 @@ int main()
 
 
 
-output:
+// output: in case of unordered map
 
-m->1
-p->1
-t->1
-r->2
-v->1
-i->1
-u->2
-h->2
-n->2
-a->4
-T->1
+// m->1
+// p->1
+// n->2
+// a->4
+// r->2
+// v->1
+// i->1
+// u->2
+// h->2
+// t->2
+
+//ordered map ke case me  output:
+// a->4
+// h->2
+// i->1
+// m->1
+// n->2
+// p->1
+// r->2
+// t->2
+// u->2
+// v->1
