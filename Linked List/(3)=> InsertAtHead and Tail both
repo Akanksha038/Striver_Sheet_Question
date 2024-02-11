@@ -1,0 +1,83 @@
+/******************************************************************************
+Insert node at heat and tail both position
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* next;
+    
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+
+void insertAtTail(Node* &head,Node*&tail,int data)
+{
+    Node*newNode=new Node(data);
+    
+    if(tail==NULL)
+    {
+        //abb first node add hone wali hai
+        head=newNode;
+        tail=newNode;
+        
+    }
+    else{
+         tail->next=newNode;
+       
+        tail=newNode;
+    }
+    
+}
+
+void insertAtHead(Node* &head,Node* &tail,int data){
+    Node*newNode=new Node(data);
+   
+    if(head==NULL)
+    {
+         head=newNode;
+        tail=newNode;
+        
+    }
+    else
+    {
+         newNode->next=head;
+        
+    }
+    head=newNode;
+}
+
+void print(Node*&head)
+{
+    Node*temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    
+}
+
+
+
+int main()
+{
+    Node*head=NULL;
+    Node*tail=NULL;
+    insertAtHead(head,tail,10);
+    insertAtTail(head,tail,20);
+    insertAtHead(head,tail,100);
+    insertAtTail(head,tail,2000);
+    print(head);
+    
+    
+
+    return 0;
+}
+
+// output==>
+
+// 100 10 20 2000
