@@ -1,0 +1,116 @@
+/******************************************************************************
+Insert node at heat and tail both position
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* next;
+    
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+
+void insertAtTail(Node* &head,Node*&tail,int data)
+{
+    Node*newNode=new Node(data);
+    
+    if(tail==NULL)
+    {
+        //abb first node add hone wali hai
+        head=newNode;
+        tail=newNode;
+        
+    }
+    else{
+         tail->next=newNode;
+       
+        tail=newNode;
+    }
+    
+}
+
+void insertAtHead(Node* &head,Node* &tail,int data){
+    Node*newNode=new Node(data);
+   
+    if(head==NULL)
+    {
+         head=newNode;
+        tail=newNode;
+        
+    }
+    else
+    {
+         newNode->next=head;
+        
+    }
+    head=newNode;
+}
+
+///insert at random position
+    void insertAtPosition(int position, Node *&head,Node*&tail,int data){
+        Node *newNode=new Node(data);
+        if(head==NULL)
+        {
+            head=newNode;
+            tail=newNode;
+            return;
+            
+        }
+        else
+        {
+            Node*previous=head;
+             Node*Curr;
+            //step1: find previous pointer and current pointer
+            for(int i=1;i<position;i++)
+            {
+                previous=previous->next;
+            }
+            
+            Curr=previous->next;
+            newNode->next=Curr;
+        previous->next=newNode;
+            
+        }
+        
+        
+        
+    }
+
+void print(Node*&head)
+{
+    Node*temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    
+}
+
+
+
+int main()
+{
+    Node*head=NULL;
+    Node*tail=NULL;
+    insertAtHead(head,tail,10);
+    insertAtHead(head,tail,100);
+    insertAtHead(head,tail,1000);
+    insertAtHead(head,tail,10000);
+    insertAtHead(head,tail,100000);
+     cout<<"Position "<<endl;
+   insertAtPosition(4,head,tail,55555);
+   print(head);
+    
+    
+
+    return 0;
+}
+
+// output==>
+
+// 100 10 20 2000
