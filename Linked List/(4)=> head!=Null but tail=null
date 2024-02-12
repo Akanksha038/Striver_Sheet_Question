@@ -1,0 +1,102 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node*next;
+    
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+        
+    }
+    
+   
+    
+};
+
+//insert at last Node
+    void insertAtTail(Node* &head, Node*&tail,int data){
+        Node *newNode=new Node(data);
+        if(tail==NULL)
+        {
+            head=newNode;
+            tail=newNode;
+        }
+        
+        else{
+            tail->next=newNode;
+            tail=newNode;
+            
+        }
+        
+        
+    }
+
+ //insert at first of head
+    void insertAtHead(Node* &head, Node* &tail,int data)
+    {
+        Node*newNode=new Node(data);
+        if(head==NULL)
+        {
+            head=newNode;
+            tail=head;
+        }
+        
+        else
+        {
+            newNode->next=head;
+        
+           
+        }
+         head=newNode;
+        
+        
+    }
+
+void print(Node*&head)
+{
+    Node*temp=head;
+    
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+ 
+int main()
+{
+  Node*tail=NULL;
+  Node *first=new Node(100);
+  Node *second=new Node(1000);
+  Node *third=new Node(10000);
+  first->next=second;
+  tail=second;
+  second->next=third;
+  tail=third;
+  third->next=NULL;
+  
+  print(first);
+  cout<<" ";
+  
+  cout<<"\n"<< "next"<<endl;            
+  insertAtHead(first,tail,5);
+
+   print(first);
+   cout<<endl;
+   
+   insertAtTail(first,tail,80000);
+   print(first);
+ return 0;
+}
+
+
+// output
+
+// 100 1000 10000  
+// next
+// 5 100 1000 10000 
+// 5 100 1000 10000 80000 
+
+
