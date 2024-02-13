@@ -69,7 +69,7 @@ void insertAtPosition(int position ,Node*&head,Node*&tail,int data)
     }
     
     int len=findLength(head);
-    if(position==len)
+    if(position=len)
     {
         //want to insert at last position of ll
         insertAtTail(head,tail,data);
