@@ -1,0 +1,127 @@
+/******************************************************************************
+
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+class Node
+{
+    public:
+    int data;
+    Node *next;
+    Node(int data)
+    {
+        this->data=data;
+        this->next=NULL;
+    }
+    
+};
+
+void insertAtHead(Node*&head, Node*&tail,int data)
+{
+    Node*newNode=new Node(data);
+    if(head==NULL){
+        head=newNode;
+        tail=newNode;
+    }
+    else{
+        newNode->next=head;
+        head=newNode;
+    }
+}
+
+void insertAtTail(Node*&head,Node*&tail,int data)
+{
+    Node*newNode=new Node(data);
+    if(tail==NULL){
+        head=newNode;
+        tail=newNode;
+    }
+    else{
+        // newNode->next=head;
+        tail->next=newNode;
+        tail=newNode;
+    }
+    
+}
+
+
+int findLength(Node*&head)
+{
+    int length=0;
+    Node*temp=head;
+    while(temp!=NULL)
+    {
+        temp=temp->next;
+        length++;
+        
+    }
+    return length;
+    
+}
+
+void insertAtPosition(int position ,Node*&head,Node*&tail,int data)
+{
+    if(position==0)
+    {
+        insertAtHead(head,tail,data);
+        return;
+    }
+    
+    int len=findLength(head);
+    if(position==len)
+    {
+        //want to insert at last position of ll
+        insertAtTail(head,tail,data);
+        return;
+    }
+    
+    Node*newNode=new Node(data);
+    //find current and previous
+    Node*previous=head;
+    int i=1;
+    while(i<position)
+    {
+        previous=previous->next;
+        i++;
+    }
+    
+   Node* current=previous->next;
+   
+   newNode->next=current;
+   previous->next=newNode;
+}
+
+
+void print(Node*&head)
+
+{
+    Node*temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+int main()
+{
+    Node*head=NULL;
+    Node*tail=NULL;
+    insertAtHead(head,tail,10);
+    insertAtHead(head,tail,100);
+    insertAtHead(head,tail,1000);
+    insertAtTail(head,tail,5);
+       
+    print(head);
+    cout<<endl;
+    cout<<"head->"<<head->data<<endl;
+    cout<<"tail->"<<tail->data<<endl;
+       
+    insertAtPosition(5,head,tail,666);
+    print(head);
+    cout<<endl;
+    cout<<"head->"<<head->data<<endl;
+    cout<<"tail->"<<tail->data<<endl;
+    
+    return 0;
+}
