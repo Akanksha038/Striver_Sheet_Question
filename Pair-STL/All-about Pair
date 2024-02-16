@@ -1,0 +1,71 @@
+/*****************************************************************************
+//PAIR in c++ STL
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+
+
+
+int main()
+{
+    pair<int,string>p;
+    p={1,"xyz"};
+    
+    pair<int,string>p1=p;
+    p1.first=122; 
+    cout<<p.first<<" "<<p.second<<endl;  //output=>1 xyz
+    
+    
+    cout<<"by reference"<<endl;
+    
+     pair<int,string>p2;
+    p={1,"xyz"};
+    
+    pair<int,string>&p3=p2;
+    p3.first=122;
+    // p3.second="zxcvb";
+    cout<<p2.first<<" "<<p2.second<<endl;  //output=>1 xyz
+    
+    
+    
+    cout<<" 2M ARRAYS KO PAIR ME MAP KARNA"<<endl;
+    
+    int a[]={1,2,3};
+    int b[]={3,4,5};
+    
+    cout<<"maping start"<<endl;
+    
+    pair<int,int>pair_a[3];
+    pair_a[0]={1,3};
+    pair_a[1]={2,4};
+    pair_a[2]={3,5};
+    
+    for(int i=0;i<3;i++){
+        cout<<pair_a[i].first<<" "<<pair_a[i].second<<endl;
+    }
+
+
+  cout<<"agar swap karna chahte hai to ham pair ki help se dono array ke element ko swap kar lenge \n we swapped index 0 to index 2"<<endl;
+  swap(pair_a[0],pair_a[2]);
+   for(int i=0;i<3;i++){
+        cout<<pair_a[i].first<<" "<<pair_a[i].second<<endl;
+    }
+    return 0;
+}
+
+
+
+// output
+
+// by reference
+// 122 
+//  2M ARRAYS KO PAIR ME MAP KARNA
+// maping start
+// 1 3
+// 2 4
+// 3 5
+// agar swap karna chahte hai to ham pair ki help se dono array ke element ko swap kar lenge 
+//  we swapped index 0 to index 2
+// 3 5
+// 2 4
+// 1 3
