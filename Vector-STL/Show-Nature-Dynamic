@@ -1,0 +1,62 @@
+/*****************************************************************************
+// show nature of  VECTOR is dynamic 
+*******************************************************************************/
+#include <iostream>
+#include <vector>
+
+using namespace std;
+void printVec(vector<int>v){
+    cout<<" size:"<<v.size()<<endl;
+    for(int i=0;i<v.size();++i){
+        
+        cout<<" elements Value=> "<<v[i]<<" ";
+    }
+    cout<<endl;
+}
+
+
+
+int main()
+{
+    vector<int>v;
+    int n;
+    cout<<" size of array"<<endl;
+    cin>>n;
+    
+    
+    cout<<" for entering values in vector"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        int x;
+        cin>>x;
+        printVec(v);
+        v.push_back(x);
+    }
+    
+    
+    printVec(v);
+    
+    
+    
+    return 0;
+}
+
+
+// output
+
+//  size of array
+// 5
+//  for entering values in vector
+// 10 20 30 40 50
+//  size:0
+
+//  size:1
+//  elements Value=> 10 
+//  size:2
+//  elements Value=> 10  elements Value=> 20 
+//  size:3
+//  elements Value=> 10  elements Value=> 20  elements Value=> 30 
+//  size:4
+//  elements Value=> 10  elements Value=> 20  elements Value=> 30  elements Value=> 40 
+//  size:5
+//  elements Value=> 10  elements Value=> 20  elements Value=> 30  elements Value=> 40  elements Value=> 50 
