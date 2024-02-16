@@ -1,0 +1,68 @@
+/******************************************************************************
+
+How to declare size and value at the time of initialisation of of vector
+*******************************************************************************/
+#include <iostream>
+#include<vector>
+using namespace std;
+void printVec(vector<int>v)
+{
+    cout<<"size:"<<v.size()<<endl;
+    for(int i=0;i<v.size();++i){
+        cout<<v[i]<<" ";
+    }
+    cout<<endl;
+}
+
+
+int main()
+{
+    
+    
+ //********  1st way********//////////
+ cout<<"1st way"<<endl;
+ vector<int>arr(5);
+ arr.push_back(10);
+ printVec(arr);
+ 
+ 
+//  output=> 0 0 0 0 0 10 
+ //***************************************//
+    
+    
+/////////   2nd way*******************
+cout<<"2nd way"<<endl;
+
+vector<int>arr1(10,5); // esme hamne 10 size ki arr li hai and usme value hamne 5 se initailse kar di hai ==>like   o/p=> 5 5 5 5 5 5 5 5 5 5 
+printVec(arr1);
+
+
+arr1.push_back(100);  //// esme hamne 10 size ki arr me  5 put kiya tha usme 100 value push back ki jisse 100 sabse last me enter ho jayegi  and  ==>like o/p=>   5 5 5 5 5 5 5 5 5 5 100
+printVec(arr1);
+
+///3rd way
+
+cout<<"3rd way"<<endl;
+vector<int>v1;
+printVec(v1);
+
+
+    
+    
+    
+    return 0;
+}
+
+// output
+
+
+// 1st way
+// size:6
+// 0 0 0 0 0 10 
+// 2nd way
+// size:10
+// 5 5 5 5 5 5 5 5 5 5 
+// size:11
+// 5 5 5 5 5 5 5 5 5 5 100 
+// 3rd way
+// size:0
