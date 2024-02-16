@@ -1,0 +1,55 @@
+/*****************************************************************************
+// VECTOR in c++ STL
+*******************************************************************************/
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+
+
+int main()
+{
+    vector<int>v;
+    int n;
+    cout<<" size of array"<<endl;
+    cin>>n;
+    
+    
+    cout<<" for entering values in vector"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        int x;
+        cin>>x;
+        v.push_back(x);
+    }
+    
+    cout<<" for printing values of vector"<<endl;
+    // printVec(v);
+    for(int i=0;i<v.size();++i){
+        cout<<v[i]<<" ";
+    }
+    
+    
+    
+    // output of above code 
+    
+//      size of array
+// 5
+//  for entering values in vector
+// 10      
+// 20
+// 30
+// 40
+// 50
+//  for printing values of vector
+// 10 20 30 40 50 
+    
+    
+    return 0;
+    
+    
+    
+    
+    
+}
