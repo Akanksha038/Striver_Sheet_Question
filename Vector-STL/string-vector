@@ -1,0 +1,45 @@
+/******************************************************************************
+
+Changes occur during copying of and vector
+*******************************************************************************/
+#include <iostream>
+#include<vector>
+using namespace std;
+void printVec(vector<string>s)
+{
+    cout<<"size:"<<s.size()<<endl;
+    for(int i=0;i<s.size();++i){
+        cout<<s[i]<<" ";
+    }
+    cout<<endl;
+}
+
+
+int main()
+{
+    vector<string>s;
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        string s1;
+        cin>>s1;
+        s.push_back(s1);
+    }
+    
+    printVec(s);
+    
+ 
+ return 0;
+}
+
+// output
+// 5
+// qwer
+// asdfg
+// zxcv
+// hjk
+// bnm
+// size:5
+// qwer asdfg zxcv hjk bnm 
+
