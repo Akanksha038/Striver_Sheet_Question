@@ -1,0 +1,146 @@
+/******************************************************************************
+
+Doubly Linked List
+
+
+*******************************************************************************/
+
+#include <iostream>
+using namespace std;
+ class Node
+ {
+     
+     public:
+    int data;
+    Node*prev;
+    Node*next;
+    
+    Node(int data){
+        this->data=data;
+        this->prev=NULL;
+        this->next=NULL;
+    }
+    
+ };
+ void print(Node*&head){   //TC=>O(N), S.C=>O(N)
+     Node*temp=head;
+     while(temp!=NULL){
+         cout<<temp->data<<" "<<endl;
+         temp=temp->next;
+     }
+ }
+ 
+ int getLength(Node*&head) //T.C=>O(N) ,S.C=>O(N)
+ {
+     int len=0;
+     Node*temp=head;
+     while(temp!=NULL)
+     {
+         len++;
+         temp=temp->next;
+     }
+     return len;
+ }
+ 
+ 
+ void insertAtHead(Node*&head,Node*&tail,int data){  //T.C==> O(1), S.C=>O(1)
+     Node*newNode=new Node(data);
+     if(head==NULL)
+     {
+         head=newNode;
+         tail=newNode;
+         return ;
+     }
+     else{
+         
+     
+     newNode->next=head;
+     head->prev=newNode;
+     head=newNode;
+     }
+ }
+ 
+ 
+ 
+ 
+  void insertAtTail(Node*&head,Node*&tail,int data){  //T.C==> O(1), S.C=>O(1)
+     Node*newNode=new Node(data);
+     if(tail==NULL)
+     {
+         head=newNode;
+         tail=newNode;
+         return ;
+     }
+     else{
+         
+     
+     newNode->prev=tail;
+     tail->next=newNode;
+     tail=newNode;
+     }
+ }
+ 
+ int main(){
+     Node*head=new Node(10);
+         Node*second=new Node(20);
+             Node*third=new Node(30);
+                 Node*fourth=new Node(40);
+                     Node*fifth=new Node(50);
+                     
+    //connect Node
+    head->next=second;
+    
+    second->next=third;
+    second->prev=head;
+    
+    third->next=fourth;
+    third->prev=second;
+    
+    fourth->next=fifth;
+    fourth->prev=third;
+   Node* tail=fifth;
+    
+    cout<<" Original Doubly LL"<<endl;
+    print(head);
+    cout<< "\nlength:"<<getLength(head)<<endl;
+    cout<<"insertAtHead: "<<endl;
+    
+    insertAtHead(head,tail,8888);
+    print(head);
+    
+    cout<<"insertAtTail: "<<endl;
+     insertAtTail(head,tail,501);
+    print(head);
+    
+    return 0;
+     
+     
+ }
+ 
+ 
+//  output
+
+
+ Original Doubly LL
+10 
+20 
+30 
+40 
+50 
+
+length:5
+insertAtHead: 
+8888 
+10 
+20 
+30 
+40 
+50 
+insertAtTail: 
+8888 
+10 
+20 
+30 
+40 
+50 
+501 
