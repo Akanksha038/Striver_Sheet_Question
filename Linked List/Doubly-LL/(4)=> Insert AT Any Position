@@ -2,6 +2,14 @@
 
 Doubly Linked List
 Esme code me ek dikkat hai ki jab ham 7th position pe value insert karenge matlb jab ham size-1 position pe value inset karenge tab ye last me insert kar dega.
+esko sahi karne ke liye , ham equal operator hata denge from     if(Position>=len) ye position ke baad ke greator hoga but greater equal nahi hoga
+
+updated is that:
+int len=getLength(head);
+     if(Position>len){
+         insertAtTail(head,tail,data);
+         return ;
+     }
 
 
 *******************************************************************************/
@@ -103,7 +111,7 @@ using namespace std;
      }
      
      int len=getLength(head);
-     if(Position>=len){
+     if(Position>len){
          insertAtTail(head,tail,data);
          return ;
      }
