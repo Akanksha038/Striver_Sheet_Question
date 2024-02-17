@@ -1,6 +1,7 @@
 /******************************************************************************
 
 Doubly Linked List
+Esme code me ek dikkat hai ki jab ham 7th position pe value insert karenge matlb jab ham size-1 position pe value inset karenge tab ye last me insert kar dega.
 
 
 *******************************************************************************/
