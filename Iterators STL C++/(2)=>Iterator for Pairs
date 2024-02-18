@@ -18,6 +18,12 @@ int main()
     for(it=v.begin();it!=v.end();++it){
         cout<<(*it).first<<"->"<<(*it).second<<endl;
     }
+    
+    
+    // or
+    //  for(it=v.begin();it!=v.end();++it){
+    //     cout<<it->first<<"->"<<it->second<<endl; //it also give same result as it is line 18-19
+    // }
 
     return 0;
 }
