@@ -2,16 +2,16 @@ class Solution {
  public:
   int searchInsert(vector<int>& nums, int target) {
     int l = 0;
-    int r = nums.size();
+    int h = nums.size();
 
-    while (l < r) {
-      const int m = (l + r) / 2;
-      if (nums[m] == target)
-        return m;
-      if (nums[m] < target)
-        l = m + 1;
+    while (l < h) {
+      const int middle = (l + h) / 2;
+      if (nums[middle] == target)
+        return middle;
+      if (nums[middle] < target)
+        l = middle + 1;
       else
-        r = m;
+        h = middle;
     }
 
     return l;
