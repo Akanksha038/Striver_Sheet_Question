@@ -1,0 +1,36 @@
+/******************************************************************************
+
+Decimal -> Binary
+*******************************************************************************/
+#include <iostream>
+#include<math.h>
+using namespace std;
+
+
+int main()
+{
+    int n;
+    cin>>n;
+    int p=n;
+     int ans=0;
+     int i=0;
+    while(n!=0){
+        //find ki right most bit kya hai
+        int bit=n&1;
+        n=n>>1;
+        //reverse karna padega kuiki hamme ans binary ka order ulta milega
+        
+     ans= ans+(pow(10,i)* bit);
+     i++;
+    }
+    
+    std::cout<<"Binary representation  of "<<p<<" is:"<<ans<<endl;
+
+    return 0;
+}
+
+
+output
+
+100
+Binary representation  of 100 is:1100100
