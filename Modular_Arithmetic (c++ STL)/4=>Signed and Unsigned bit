@@ -1,0 +1,36 @@
+/******************************************************************************
+
+
+storing capacity of bit
+
+*******************************************************************************/
+#include <iostream>
+#include<climits>
+using namespace std;
+
+
+
+int main()
+{
+    cout<<INT_MAX<<endl;
+    int a=(1<<32)-1; ///overflow
+    cout<<a<<endl;
+    
+    int b=(1LL<<31)-1; //ye signed integer hai esliye ye 31 bit store kar raha hai ek bit
+    // ye signed ko store  karne ke liye le  raha hai
+    //reserved one bit for sign 
+    cout<<b<<endl;
+    
+    unsigned int c=(1<<32)-1; //unsigned store only +ve bit to koi need nahi hai signed bit ke liye 
+    cout<<c;
+
+    return 0;
+}
+
+
+output
+
+2147483647
+-1
+2147483647
+4294967295
