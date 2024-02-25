@@ -1,0 +1,88 @@
+Ques=> Sorting is useful as the first step in many different tasks. The most common task is to make finding things easier,
+but there are other uses as well. In this case, it will make it easier to determine which pair or pairs of elements 
+have the smallest absolute difference between them.
+
+Output Format
+
+Sample Input 0
+
+10
+-20 -3916237 -357920 -3620601 7374819 -7330761 30 6246457 -6461594 266854 
+Sample Output 0
+
+-20 30
+Explanation 0
+(30) - (-20) = 50, which is the smallest difference.
+
+Sample Input 1
+
+12
+-20 -3916237 -357920 -3620601 7374819 -7330761 30 6246457 -6461594 266854 -520 -470 
+Sample Output 1
+
+-520 -470 -20 30
+Explanation 1
+(-470) - (-520) = 30 - (-20) = 50, which is the smallest difference.
+
+Sample Input 2
+
+4
+5 4 3 2
+Sample Output 2
+
+2 3 3 4 4 5
+Explanation 2
+Here, the minimum difference is 1. Valid pairs are (2, 3), (3, 4), and (4, 5).
+
+
+
+
+Solution***********************************************************************************************************************
+
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <climits>
+using namespace std;
+
+vector<int> closestNumbers(vector<int> arr) 
+{
+    sort(arr.begin(), arr.end());
+    int diff = INT_MAX;
+    vector<int> result;
+
+    for(int i = 0; i < arr.size() - 1; i++)
+    {
+        int MinDiff = abs(arr[i + 1] - arr[i]);
+        diff = min(MinDiff, diff);
+    }
+
+    for(int i = 0; i < arr.size() - 1; i++)
+    {
+        if((arr[i + 1] - arr[i]) == diff)
+        {
+            result.push_back(arr[i]);
+            result.push_back(arr[i + 1]);
+        }
+    }
+
+    return result;
+}
+
+int main()
+{
+    vector<int> arr = {-20 ,-3916237, -357920, -3620601, 7374819, -7330761, 30, 6246457, -6461594, 266854 };
+    vector<int> closestPairs = closestNumbers(arr);
+    for(int num : closestPairs)
+    {
+        cout << num<<" ";
+    }
+    cout << endl;
+
+    return 0;
+}
+
+
+output
+-20 30
