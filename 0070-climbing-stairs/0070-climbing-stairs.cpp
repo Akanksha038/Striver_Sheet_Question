@@ -67,12 +67,11 @@ public:
 int solve(int n,vector<int>dp)
 {
 
-         if(n<0) return 0;
-         if(n==0|| n==1)  return 1;
+        
     
     int one=1;
     int two=1;
-    int current=1;
+    int current=1;// current ko 1 esliye rakha hai kyuki agar n ki value 0 ho ya 1 ho to hamme 1 hi return karna hai;
       
         for(int i=2;i<=n;i++)
         {   
