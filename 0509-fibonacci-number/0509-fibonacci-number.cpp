@@ -23,7 +23,7 @@
 
 
 
-#include <vector>
+
 
 class Solution {
 public:
@@ -41,7 +41,7 @@ public:
     }
     
     int fib(int n) {
-        std::vector<int> dp(n + 1, -1);
+        vector<int> dp(n + 1, -1);
         return solve(n, dp);
     }
 };
