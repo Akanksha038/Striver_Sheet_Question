@@ -1,19 +1,20 @@
 class Solution {
  public:
-  int searchInsert(vector<int>& nums, int target) {
-    int l = 0;
-    int h = nums.size();
-
-    while (l < h) {
-      const int middle = (l + h) / 2;
-      if (nums[middle] == target)
-        return middle;
-      if (nums[middle] < target)
-        l = middle + 1;
-      else
-        h = middle;
-    }
-
-    return l;
+  int searchInsert(vector<int>& nums, int t) 
+  {
+      int l=0;
+      int h=nums.size()-1;
+      while(l<=h)
+      {
+          int mid=(l+h)/2;
+          if(nums[mid]==t) return mid;
+          else if(nums[mid]<t){l=mid+1;}
+          else{ h=mid-1;}
+      }
+      
+      // return l;
+      // or
+      return h+1;
+    
   }
 };
