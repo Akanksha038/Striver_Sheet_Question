@@ -1,44 +1,34 @@
 class Solution {
 public:
-    vector<int> searchRange(vector<int>& nums, int target) {
+    vector<int> searchRange(vector<int>& nums, int t)
+    {
+    vector<int>ans;
         int l=0;
         int h=nums.size()-1;
-        int middle;
         while(l<=h)
         {
-            middle=(l+h)/2;
-                
-            if(nums[middle]==target)
-                
-            {
-                int st=middle;
-                int end=middle;
-                   while(st>0 && nums[st-1]==nums[middle])
-                  {  
-                    st--;
-                  }
-                  while(end<nums.size()-1 && nums[end+1]==nums[middle])
-                  {
-                    end++;
-                  }
-                    return {st,end};
-            }
-                
-           
-                
+            int mid=(l+h)/2;
             
+            if(nums[mid]>t){ h=mid-1;}
             
-            else if(nums[middle]<target)
-            {
-                l=middle+1;
-                
-            }
+            else if(nums[mid]<t){l=mid+1; }
+            
             else
             {
-                h=middle-1;
+                //first occurence
+                int first=mid;
+                int last=mid;
+                while(first>0 && nums[first]==nums[first-1]) { first--;}
+                while(last<nums.size()-1 && nums[last]==nums[last+1]){ last++;} 
+                return {first,last};
             }
         }
+    
+        
         return {-1,-1};
+    
+        
+        
         
     }
 };
