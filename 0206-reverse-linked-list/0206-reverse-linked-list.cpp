@@ -8,34 +8,54 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution 
-{
+
+
+// //by using loop
+
+// class Solution {
+// public:
+//     ListNode* reverseList(ListNode* head) 
+//     {
+//               ListNode*prev=NULL;
+//         ListNode*curr=head;
+//         while(curr!=NULL)
+//         {
+//             ListNode*temp=curr->next;
+//             curr->next=prev;
+//             prev=curr;
+//             curr=temp;
+//         }
+        
+//         return prev;
+//       }
+// };
+
+
+
+
+
+
+//by using recursion
+
+class Solution {
 public:
+    
+    
+    
+    
+    ListNode* reverseListusingRecursion(ListNode* prev, ListNode* curr) {
+        if (curr == NULL) 
+            return prev;
+        
+        ListNode* temp = curr->next;
+        curr->next = prev;
+        return reverseListusingRecursion(curr, temp);
+    }
+    
     ListNode* reverseList(ListNode* head) {
-        
-        // step1: ham ek vector me saari vakue ko push back kara le 
-            // step 2: ham back yani last se value ko ek temp node me store kar de aur vector me value store this usse pop back kar de
-        
-        ListNode*temp=head;
-        vector<int>v;
-        //step1
-        while(temp!=0)
-        {
-            v.push_back(temp->val);
-            temp=temp->next;
-            
-        }
-        
-//         //step2
-        temp = head;
-        while(temp!=NULL)
-        {
-            temp->val=v.back();
-            v.pop_back();
-            temp=temp->next;
-        }
-      
-        return head;
-        
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+       
+        return reverseListusingRecursion(prev, curr);
     }
 };
