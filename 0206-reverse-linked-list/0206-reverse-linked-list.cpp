@@ -43,19 +43,23 @@ public:
     
     
     
-    ListNode* reverseListusingRecursion(ListNode* prev, ListNode* curr) {
-        if (curr == NULL) 
-            return prev;
+    ListNode* reverseListusingRecursion(ListNode* prev,ListNode* curr){
+        if(curr==NULL) return prev;
         
-        ListNode* temp = curr->next;
-        curr->next = prev;
-        return reverseListusingRecursion(curr, temp);
-    }
+            ListNode*temp=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=temp;
+            return reverseListusingRecursion(prev,curr);
+            }
     
-    ListNode* reverseList(ListNode* head) {
-        ListNode* prev = NULL;
-        ListNode* curr = head;
+    
+    ListNode* reverseList(ListNode* head) 
+    {
+        ListNode*prev=NULL;
+        ListNode*curr=head;
        
-        return reverseListusingRecursion(prev, curr);
-    }
+        head=reverseListusingRecursion( prev, curr);
+        return head;
+      }
 };
