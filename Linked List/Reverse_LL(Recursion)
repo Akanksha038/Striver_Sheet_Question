@@ -1,0 +1,80 @@
+/******************************************************************************
+
+reverse lL
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node*next;
+    
+    Node(int data)
+    {
+        this->data=data;
+        this->next=NULL;
+    }
+};
+
+//want to reverse ll;
+Node* reverse(Node*&prev,Node*&curr){
+    
+    if(curr==NULL)
+    {
+        return prev;
+    }
+    
+    
+    
+    Node*NEXT=curr->next;
+    curr->next=prev;
+   
+    
+    
+    return reverse(curr,NEXT);
+    
+    
+    
+}
+
+
+
+void print(Node*&head){
+    Node*temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+        
+    }
+    
+    
+}
+
+int main()
+{
+    Node*head=new Node(10);
+    Node*second=new Node(20);
+    Node*third=new Node(30);
+    Node*fourth=new Node(40);
+    Node*fifth=new Node(50);
+    Node*six=new Node(60);
+    
+    head->next=second;
+    second->next=third;
+    third->next=fourth;
+    fourth->next=fifth;
+    fifth->next=six;
+    
+    print(head);
+    cout<<endl;
+    
+    cout<<"reversed LL is=>"<<endl;
+    Node*prev=NULL;
+    Node*curr=head;
+    head=reverse(prev,curr);
+    print(head);
+    
+
+    return 0;
+}
