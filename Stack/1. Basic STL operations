@@ -1,0 +1,43 @@
+/******************************************************************************
+
+Stack basic operation
+*******************************************************************************/
+#include <iostream>
+#include<stack>
+using namespace std;
+
+
+int main()
+{
+    
+    //creation of stack
+    stack<int>s;
+    s.push(10);
+    s.push(20);
+    s.push(30);
+    s.push(40);
+    s.push(50);
+    cout<<"Total number of element in stack : "<<s.size()<<endl;
+    s.pop();
+    cout<<"Total number of element in stack : "<<s.size()<<endl;
+    cout<<"Element on top of stack : "<<s.top()<<endl;
+    
+    cout<<"Here I want to check stack is empty or not"<<endl;
+    if(s.empty()) cout<<"stack is empty"<<endl;
+    else cout<<"stack is not empty"<<endl;
+
+    return 0;
+}
+
+
+
+
+//output
+
+
+
+Total number of element in stack : 5
+Total number of element in stack : 4
+Element on top of stack : 40
+ Here I want to check stack is empty or not
+stack is not empty
