@@ -25,6 +25,13 @@ int main()
     cout<<"Here I want to check stack is empty or not"<<endl;
     if(s.empty()) cout<<"stack is empty"<<endl;
     else cout<<"stack is not empty"<<endl;
+    
+    cout<<"print all element of stack"<<endl;
+    while(!s.empty()){
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+    cout<<endl;
 
     return 0;
 }
@@ -36,8 +43,10 @@ int main()
 
 
 
-Total number of element in stack : 5
-Total number of element in stack : 4
-Element on top of stack : 40
- Here I want to check stack is empty or not
-stack is not empty
+// Total number of element in stack : 5
+// Total number of element in stack : 4
+// Element on top of stack : 40
+//  Here I want to check stack is empty or not
+// stack is not empty
+// print all element of stack
+// 40 30 20 10 
