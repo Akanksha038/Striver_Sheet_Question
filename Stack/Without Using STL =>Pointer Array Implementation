@@ -1,0 +1,96 @@
+/******************************************************************************
+ 
+Without using inbuilt STL function implementation of stack by using pointer array
+ 
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+class stack {
+public:
+    int *arr;   // Pointer to dynamically allocated array
+    int size;   // Size of the stack
+    int top;    // Index of the top element
+    
+    // Constructor
+    stack(int size) {
+        arr = new int[size]; // Memory allocation for the array
+        this->size = size;   // Assigning the size
+        top = -1;             // Initializing top index to -1 (empty stack)
+    }
+    
+    // Push function to add an element to the top of the stack
+    void push(int data) {
+        if (top < size - 1) {   // Check if there's space in the stack
+            top++;              // Move the top index up
+            arr[top] = data;    // Insert the data at the top index
+        } else {
+            cout << "Stack Overflow" << endl; // Display overflow message if stack is full
+        }
+    }
+    
+    // Pop function to remove the top element from the stack
+    void pop() {
+        if (top == -1) {
+            cout << "Stack Underflow ==> Can't delete element" << endl; // Display underflow message if stack is empty
+        } else {
+            top--;  // Decrement the top index
+        }
+    }
+    
+    // Function to get the top element of the stack
+    int getTop() {
+        if (top == -1) {
+            cout << "There is no any element in stack" << endl; // Display message if stack is empty
+            return -1;  // Return a default value (assuming -1 is not a valid element)
+        } else {
+            return arr[top]; // Return the top element
+        }
+    }
+    
+    // Function to get the size of the stack
+    int getSize() {
+        return top + 1; // Size of stack is one more than the top index
+    }
+    
+    // Function to check if the stack is empty
+    bool isEmpty(){
+        if(top==-1){
+            return true;
+        }
+        
+        else{
+            return false;
+        }
+    }
+    
+};
+
+int main() {
+    // Creation of stack with maximum size of 100
+    stack s(10);
+    s.push(10); // Add elements to the stack
+    s.push(20);
+    s.push(30);
+    s.push(40);
+    s.push(50);
+    
+    // Pop and print elements until stack is empty
+    while (!s.isEmpty()) {
+        cout << s.getTop() << " "; // Print the top element
+        s.pop();                    // Remove the top element
+    }
+    cout<<endl;
+    
+    cout << "Size of stack : " << s.getSize() << endl; // Print the size of the stack
+    
+    return 0;
+}
+
+
+
+output
+50 40 30 20 10 
+Size of stack : 0
