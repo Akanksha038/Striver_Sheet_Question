@@ -1,0 +1,88 @@
+/******************************************************************************
+Sort Stack 
+
+*******************************************************************************/
+#include <iostream>
+#include<stack>
+using namespace std;
+
+void insertSorted(stack<int>&s,int target){
+    if(s.empty())
+    {
+        s.push(target);
+        return ;
+    }
+    
+    //base case
+    if(s.top()>=target)
+    {
+        s.push(target);
+        return;
+    }
+    
+    int topElement=s.top();
+    s.pop();
+    
+    insertSorted(s,target);
+    
+    s.push(topElement);
+    
+}
+
+//sort stack
+void sortStack(stack<int>&s){
+    
+    if(s.empty()){
+        return ;
+    }
+    
+    
+    int topElement=s.top();
+    s.pop();
+    
+    //recusive
+    sortStack(s);
+    
+    //har ek top ke element ko insertSorted ki help se sorted way me stack me rakhenge
+    
+    insertSorted(s,topElement);
+    
+    
+    
+}
+
+int main()
+{
+    
+    stack<int>s;
+    
+    s.push(7);
+    
+    s.push(11);
+    
+    s.push(3);
+    
+    s.push(5);
+    
+    s.push(9);
+    
+    sortStack(s);
+    
+    cout<<"printing"<<endl;
+    
+    while(!s.empty()){
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+    
+    std::cout<<endl;;
+
+    return 0;
+}
+
+
+// output:==>
+
+
+// printing
+// 3 5 7 9 11 
