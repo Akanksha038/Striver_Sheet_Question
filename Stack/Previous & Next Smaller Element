@@ -1,0 +1,109 @@
+/******************************************************************************
+
+Code for Previous and Next Smaller Element
+
+*******************************************************************************/
+#include <iostream>
+#include<vector>
+#include<stack>
+
+using namespace std;
+
+vector<int>NextSmallerElement(vector<int>v)
+{
+    
+    stack<int>s;
+    s.push(-1);
+    vector<int>ans(v.size());
+    
+    for(int i=v.size()-1; i>=0;i--)
+    {
+        int curr=v[i];
+        while(s.top()>=curr)
+        {
+            s.pop();
+            
+        }
+        ans[i]=s.top();
+        s.push(curr);
+        
+    }
+    return ans;
+    
+    
+}
+
+vector<int>PreviousSmallerElement(vector<int>v)
+{
+    
+    stack<int>s;
+    s.push(-1);
+    vector<int>ans(v.size());
+    
+    for(int i=0; i<v.size();i++)
+    {
+        int curr=v[i];
+        while(s.top()>=curr)
+        {
+            s.pop();
+            
+        }
+        ans[i]=s.top();
+        s.push(curr);
+        
+    }
+    return ans;
+    
+    
+}
+
+
+int main()
+{
+    vector<int>v;
+    v.push_back(2);
+    
+    v.push_back(1);
+    
+    v.push_back(4);
+    
+    v.push_back(3);
+    
+    vector<int>PreviousSmallerElement1=PreviousSmallerElement(v);
+    
+    vector<int>NextSmallerElement1=NextSmallerElement(v);
+    
+    cout<<"Printing Previous Smaller Element"<<endl;
+    for(int i=0;i<v.size();i++){
+        cout<<PreviousSmallerElement1[i]<<" ";
+    }
+    
+    cout<<endl;
+    
+    
+    
+    cout<<"Printing Next Smaller Element"<<endl;
+    for(int i=0;i<v.size();i++){
+        cout<<NextSmallerElement1[i]<<" ";
+    }
+    
+    cout<<endl;
+    
+    
+ 
+    
+    
+    
+    std::cout<<"Sucessfully Completed!";
+
+    return 0;
+}
+
+
+// output=====>
+
+// Printing Previous Smaller Element
+// -1 -1 1 1 
+// Printing Next Smaller Element
+// 1 -1 3 -1 
+// Sucessfully Completed!
