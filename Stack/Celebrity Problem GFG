@@ -50,7 +50,52 @@ Constraints:
 
 
 
-class Solution 
+
+// class Solution 
+// {
+//     public:
+//     //Function to find if there is a celebrity in the party or not.
+//     int celebrity(vector<vector<int> >& M, int n) 
+//     {
+        
+        
+        
+//         // 1 Bruteforce approach T.C=>o(n^2) ,S.C(O(N)) ;
+        
+//         int input[n]={0};
+//         int output[n]={0};
+         
+//         for(int i=0;i<n;i++)
+//         {
+            
+//             for(int j=0;j<n;j++)
+//             {
+//                 if(M[i][j]==1){
+//                     input[j]++;
+//                     output[i]++;
+//                 }
+//             }
+           
+//         }
+        
+        
+//         for(int i=0;i<n;i++){
+//             if(input[i]==n-1 && output[i]==0){
+//                 return i;
+//             }
+//         }
+//         return -1;
+        
+//         // code here 
+//     }
+// };
+
+
+
+ // 2 OPTIMAL  approach T.C=>o(n); S.C(1);
+ 
+ 
+ class Solution 
 {
     public:
     //Function to find if there is a celebrity in the party or not.
@@ -59,32 +104,57 @@ class Solution
         
         
         
-        // 1 Bruteforce approach T.C=>o(n^2);
+       
         
-        int input[n]={0};
-        int output[n]={0};
-         
+       stack<int>st;
+       
         for(int i=0;i<n;i++)
         {
+            st.push(i);
+           
+            }
             
-            for(int j=0;j<n;j++)
-            {
-                if(M[i][j]==1){
-                    input[j]++;
-                    output[i]++;
+            
+            while(st.size()!=1){
+                int a=st.top(); st.pop();
+                int b=st.top(); st.pop();
+                
+                if(M[a][b]==1){
+                    st.push(b);
+                }
+                else{
+                    st.push(a);
                 }
             }
+            
+            int mightBeCelebrity=st.top();
+            
            
-        }
         
         
-        for(int i=0;i<n;i++){
-            if(input[i]==n-1 && output[i]==0){
-                return i;
+        
+        for(int i=0;i<n;i++)
+        {
+            if(M[mightBeCelebrity][i]!=0 ){
+                return -1;
             }
+            
+            
         }
-        return -1;
         
-        // code here 
+         for(int i=0;i<n;i++)
+        {
+            if(M[i][mightBeCelebrity]==0  && i!=mightBeCelebrity){
+                return -1;
+            }
+            
+            
+        }
+        
+        
+        
+        return mightBeCelebrity;
+        
+      
     }
 };
