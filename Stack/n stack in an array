@@ -1,0 +1,139 @@
+// Program for n stack in an array
+#include <iostream>
+using namespace std;
+
+class Nstack{
+   
+    int *a;
+    int *top;
+    int *next;
+    
+    int m;  //for numbe of stack
+    int size;  //size of main array
+    int freespot; //tell us space in main array
+    
+    
+    public:
+    Nstack(int _m,int _s):m(_m),size(_s)
+    {
+        freespot=0;
+        a=new int[size];
+        top=new int[m];
+        next=new int[size];
+    
+    
+    
+    //intialise values
+    for(int i=0;i<m;i++)
+    {
+        top[i]=-1;
+    }
+    
+    for(int i=0;i<size;i++){
+        next[i]=i+1;
+    }
+    
+    next[size-1]=-1;
+    }
+    
+
+
+bool push(int x,int m){ //put x element into mth stack
+
+if(freespot==-1)
+{
+    return false; //stack overflow
+    
+}
+
+//find index
+int index=freespot;
+
+//update freespot
+freespot=next[index];
+
+////insert x element in array a 
+a[index]=x;
+
+////update array
+next[index]=top[m-1];
+
+//update top
+
+top[m-1]=index;
+
+
+return true;
+    
+}
+
+
+//pop from mth stack
+int pop(int m)
+{
+    if(top[m-1]==-1){
+        return -1;//stack underflow
+    }
+    
+    //find index
+    
+    int index=top[m-1];
+    
+    top[m-1]=next[index];
+    
+    int poppedElement=a[index];
+    next[index]=freespot;
+    freespot=index;
+    return poppedElement;
+    
+}
+
+
+~Nstack(){
+    delete[]a;
+    delete[]top;
+    delete[]next;
+}
+
+
+};
+
+
+int main() {
+    Nstack s(3,6);
+    cout<<s.push(10,1)<<endl;
+        cout<<s.push(100,1)<<endl;
+            cout<<s.push(1000,1)<<endl;
+                cout<<s.push(999400,1)<<endl;
+                    cout<<s.push(8880000,1)<<endl;    cout<<s.push(1000000,1)<<endl;
+                    cout<<"space is full in stack 1 that's why it give 0"<<endl;
+                     
+                        cout<<s.push(100000111,1)<<endl;
+                       
+        cout<<"Poppedd element from stack 1"<<endl<<s.pop(1)<<endl;
+        
+           cout<<"Poppedd element from stack 1"<<endl<<s.pop(1)<<endl;
+
+    return 0;
+}
+
+
+
+
+output========>
+
+1
+1
+1
+1
+1
+1
+space is full in stack 1 that's why it give 0
+0
+Poppedd element from stack 1
+1000000
+Poppedd element from stack 1
+8880000
+
+
+=== Code Execution Successful ===
