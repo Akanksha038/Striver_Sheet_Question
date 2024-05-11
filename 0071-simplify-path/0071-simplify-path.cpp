@@ -51,3 +51,26 @@ public:
         return ans;
     }
 };
+
+
+
+
+
+
+
+// // Handle directory names
+//             if (minPath != "/") {
+//                 if (minPath != "/.") {
+//                     if (minPath != "/..") {
+//                         st.push(minPath); // Regular directory, push to stack
+//                     } else {
+//                         // Move one level up
+//                         if (!st.empty()) {
+//                             st.pop();
+//                         }
+//                     }
+//                 } // else: Do nothing for "/."
+//             } else {
+//                 // Do nothing for "/"
+//             }
+//         }
