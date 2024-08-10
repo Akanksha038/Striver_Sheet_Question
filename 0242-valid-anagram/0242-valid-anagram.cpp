@@ -1,6 +1,10 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
+             if (s.size() != t.size()) {
+            return false;
+        }
+            
             int s1=s.size();
             int s2=t.size();
             
@@ -19,9 +23,11 @@ public:
                     
             }
             
+            // return m1 == m2;
             
-            return m1 == m2;
+            if(m1!= m2) return false;  
             
+            return true;
             
             
     }
