@@ -1,21 +1,27 @@
 class Solution {
 public:
     vector<int> getSneakyNumbers(vector<int>& nums) {
-        vector<int>arr;
-        unordered_map<int,int>mp;
-        for(auto i:nums){
-            mp[i]++;
-        }
         
-        for(auto it:mp)
+        set<int>st;
+        vector<int>ans;
+        for(int i=0;i<nums.size();i++)
         {
-            if(it.second >1)
+            if(st.find(nums[i])!=st.end())
             {
-                arr.push_back(it.first);
+                ans.push_back(nums[i]);
+                if(ans.size()==2)
+            {
+                break;
             }
+                
+            }
+            
+            st.insert(nums[i]);
+            
+            
         }
         
-        return arr;
+        return ans;
         
     }
 };
